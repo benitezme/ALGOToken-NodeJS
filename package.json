@@ -4,10 +4,12 @@
   "description": "Test and Client for interfacing with ALGOToken Smart Contract",
   "main": "index.js",
   "scripts": {
-    "test": "truffle test",
     "dev": "NODE_ENV=development webpack-dev-server --hot --port 3200 --config ./webpack.config.js",
+    "blockchain-test": "ganache-cli -p 8545",
+    "blockchain-dev": "ganache-cli -p 8545 -b 2",
+    "test": "truffle test",
     "format-test": "prettier-standard 'test/**/*.js'",
-    "helpers-test": "prettier-standard 'helpers/**/*.js'",
+    "format-helpers": "prettier-standard 'helpers/**/*.js'",
     "format-client": "prettier-standard 'client/**/*.js'"
   },
   "author": "Barry Low <bearcanrun@gmail.com>",
