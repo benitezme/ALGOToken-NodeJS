@@ -1,0 +1,28 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "plugin:react/recommended",
+    "standard",
+    "standard-react"
+  ],
+  "globals" : {
+    "web3" : true
+  },
+  "plugins": [
+    "babel",
+    "react"
+  ],
+  "rules": {
+    "no-alert"             : 0,
+    "key-spacing"          : 0,
+    "jsx-quotes"           : [2, "prefer-single"],
+    "max-len"              : [2, 120, 2],
+    "object-curly-spacing" : [2, "always"]
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16.0"
+    }
+  }
+}
