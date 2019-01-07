@@ -14,7 +14,6 @@ contract('AlgoTokenV1', async accounts => {
   const pauseAccount = accounts[2]
 
   let instance
-  let contract
 
   before(async () => {
     instance = await AlgoTokenV1.new()
@@ -74,7 +73,7 @@ contract('AlgoTokenV1', async accounts => {
     })
     it('transfer and check account balance has 1000000 ALGO', async () => {
       const transferAmount = '1000000'
-      let transfer = await instance.transfer(transferAccount, 1000000)
+      await instance.transfer(transferAccount, 1000000)
 
       let transferBalance = await instance.balanceOf(transferAccount)
 
@@ -110,7 +109,7 @@ contract('AlgoTokenV1', async accounts => {
     })
     it('transfer 2500000 ALGO to pause account succeedes', async () => {
       const transferAmount = 2500000
-      let transfer = await instance.transfer(pauseAccount, transferAmount)
+      await instance.transfer(pauseAccount, transferAmount)
 
       let pauseBalance = await instance.balanceOf(pauseAccount)
 
