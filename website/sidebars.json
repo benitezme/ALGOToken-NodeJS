@@ -1,0 +1,26 @@
+{
+  "docs/introduction": {
+    "Overview": ["docs/introduction", "docs/disclaimer", "docs/architecture", "docs/business-logic", "docs/governance"],
+    "Process": ["docs/process", "docs/testing", "docs/common-issues"],
+    "Architecture": ["docs/architecture"],
+    "Issues": ["issues/issues", "issues/critical-risk", "issues/high-risk", "issues/low-risk", "issues/resolved"],
+    "Guides": ["guides/algo-token-playground", "guides/remix-testing", "guides/unit-integration","guides/deploy-on-testnet", "guides/smart-check-analysis","guides/rattle-analysis","guides/solgraph-analysis","guides/mythril-analysis","guides/mythx-analysis"],
+    "Resources": ["docs/resources", "docs/contribution", "docs/license"]
+  },
+  "contracts/contracts": {
+    "Contracts": ["contracts/contracts"],
+    "ALGO Token (ERC-20)": ["contracts/algo-token"],
+    "ALGO Pool": ["contracts/algo-pool"],
+    "ALGO Miner": ["contracts/algo-miner"],
+    "ALGO Fees": ["contracts/algo-fees"],
+    "Inherited Contracts": [
+      "contracts/algo-common",
+      "contracts/algo-core-team-role",
+      "contracts/algo-supervisor-role",
+      "contracts/algo-system-role",
+      "contracts/ERC20-token-holder",
+      "contracts/i-algo-miner",
+      "contracts/terminable"
+    ]
+  }
+}

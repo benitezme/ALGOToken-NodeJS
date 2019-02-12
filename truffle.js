@@ -1,34 +1,21 @@
 require('@babel/register');
 require('@babel/polyfill');
+require('dotenv').config();
+
 /**
- * Use this file to configure your truffle project. It's seeded with some
- * common settings for different networks and features like migrations,
- * compilation and testing. Uncomment the ones you need or modify
- * them to suit your project as necessary.
  *
- * More information about configuration can be found at:
+ * To deploy via Infura, copy and rename `sample.env` to `.env` and add your Infura key.
+ * You can get a Mnemonic by installing MetaMask in your browser and creating a new account.
+ * Add this to the .env as well. Then uncomment the HDWallet, infuraKey and mnemonic conts below.
  *
- * truffleframework.com/docs/advanced/configuration
- *
- * To deploy via Infura you'll need a wallet provider (like truffle-hdwallet-provider)
- * to sign your transactions before they're sent to a remote public node. Infura API
- * keys are available for free at: infura.io/register
- *
- *   > > Using Truffle V5 or later? Make sure you install the `web3-one` version.
- *
- *   > > $ npm install truffle-hdwallet-provider@web3-one
- *
- * You'll also need a mnemonic - the twelve word phrase the wallet uses to generate
- * public/private key pairs. If you're publishing your code to GitHub make sure you load this
- * phrase from a file you've .gitignored so it doesn't accidentally become public.
+ * Finally, uncomment your desired network(s) in the network section below.
  *
  */
 
-// const HDWallet = require('truffle-hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
+const HDWallet = require('truffle-hdwallet-provider');
 //
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+const infuraKey = process.env.INFURA_KEY;
+const mnemonic = process.env.MNEMONIC;
 
 module.exports = {
   /**
@@ -39,6 +26,7 @@ module.exports = {
    * network from the command line, e.g
    *
    * $ truffle test --network <network-name>
+   *
    */
 
   networks: {
@@ -52,6 +40,8 @@ module.exports = {
       host: "127.0.0.1",     // Localhost (default: none)
       port: 8545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
+      gas: 8500000,           // Gas sent with each transaction (default: ~6700000)
+      gasPrice: 20000000000
      },
 
     // Another network with more advanced options...
@@ -66,14 +56,15 @@ module.exports = {
 
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
-    // ropsten: {
-      // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/${infuraKey}`),
-      // network_id: 3,       // Ropsten's id
-      // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-      // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-      // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-      // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    // },
+    ropsten: {
+      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infuraKey}`),
+      network_id: 3,       // Ropsten's id
+      gas: 5500000,       // Ropsten has a lower block limit than mainnet
+      gasPrice: 20000000000, 
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+    },
 
     // Useful for private networks
     // private: {

@@ -1,0 +1,57 @@
+/* your custom css */
+body {
+  font-family: $fontRegular;
+}
+
+h2, h3, h4 {
+  font-family: $fontCondensed;
+}
+
+/* Header */
+.fixedHeaderContainer {
+  background: rgba(0, 0, 0, 0.6);
+}
+.fixedHeaderContainer header a .headerTitleWithLogo {
+  font-size: 1em;
+  font-weight: 300;
+  margin-left: 2em;
+  padding-left: 1em;
+  border-left: 1px solid #666;
+}
+.fixedHeaderContainer header a .headerTitleWithLogo {
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 300;
+  margin-left: 1em;
+  padding-left: 2em;
+  border-left: 1px solid #aaa;
+}
+
+/*** HOME - index.js ***/
+/* Main Splash */
+.homeContainer .homeWrapper .projectLogo {
+    align-items: center;
+    bottom: 0;
+    display: block;
+    justify-content: center;
+    left: 0;
+    padding: 2em 100px 4em;
+    position: inherit;
+    right: 0;
+    top: 0;
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+}
+
+@media only screen and (min-width: 1024px) {
+}
+
+@media only screen and (max-width: 1023px) {
+}
+
+@media only screen and (min-width: 1400px) {
+}
+
+@media only screen and (min-width: 1500px) {
+}

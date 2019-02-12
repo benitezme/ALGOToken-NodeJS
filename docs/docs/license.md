@@ -1,3 +1,9 @@
+---
+id: license
+title: License
+sidebar_label: License
+---
+
 COPYRIGHT NOTICE
 
 © Copyright 2019 Superalgos.org

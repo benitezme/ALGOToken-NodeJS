@@ -107,7 +107,7 @@ contract('AlgoTokenV1', async accounts => {
       console.log(paused)
       assert.isFalse(paused)
     })
-    it('transfer 2500000 ALGO to pause account succeedes', async () => {
+    it('transfer 2500000 ALGO to pause account succeeds', async () => {
       const transferAmount = 2500000
       await instance.transfer(pauseAccount, transferAmount)
 

@@ -1,0 +1,23 @@
+pragma solidity 0.4.24;
+
+import "truffle/Assert.sol";
+import "truffle/DeployedAddresses.sol";
+import "../contracts/core/AlgoTokenV1.sol";
+
+contract TestAlgoTokenV1 {
+  function testInitialSupplyUsingDeployedContract() public {
+    AlgoTokenV1 algo = AlgoTokenV1(DeployedAddresses.AlgoTokenV1());
+
+    uint expected = 1000000000000000000000000000;
+
+    Assert.equal(algo.INITIAL_SUPPLY(), expected, "Owner should have 1000000000000000000000000000 ALGO initially");
+  }
+
+  function testInitialSupplyWithNewAlgoToken() public {
+    AlgoTokenV1 algo = new AlgoTokenV1();
+
+    uint expected = 1000000000000000000000000000;
+
+    Assert.equal(algo.INITIAL_SUPPLY(), expected, "Owner should have 1000000000000000000000000000 ALGO initially");
+  }
+}
