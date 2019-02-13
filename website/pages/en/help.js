@@ -26,7 +26,7 @@ function Help(props) {
       title: 'Find Issues?',
     },
     {
-      content: 'Want to contribute to the documentation or the testing of ALGO smart contracts? Visit the [Explore Algo Smart Contracts repo](#)',
+      content: 'Want to contribute to the documentation or the testing of ALGO smart contracts? Visit the [Explore Algo Smart Contracts repo](https://github.com/Superalgos/ALGOToken-NodeJS)',
       title: 'Contribute!',
     },
     {

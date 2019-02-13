@@ -18,7 +18,7 @@ Smart contracts act as a binding agreement transcribed into code. They should be
 
 ### Provenance
 
-The smart contracts being explored are authored by [Pablo Muro](https://github.com/pmmax) and can be found in the [Superalgos ALGOToken github repo](https://github.com/Superalgos/ALGOToken). This documentation and NodeJS-based tooling can be found in the [Superalgos AlgoToken-NodeJs github repo]().
+The smart contracts being explored are authored by [Pablo Muro](https://github.com/pmmax) and can be found in the [Superalgos ALGOToken github repo](https://github.com/Superalgos/ALGOToken). This documentation and NodeJS-based tooling can be found in the [Superalgos AlgoToken-NodeJs github repo](https://github.com/Superalgos/ALGOToken-NodeJS).
 
 ### Contribution
 
