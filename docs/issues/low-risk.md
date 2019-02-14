@@ -7,19 +7,6 @@ Not about fund or information loss. Minor problems or improvements, e.g. such as
 
 ---
 
-### Accomodate Leap Years
-
-|   |   |
-|---|---|
-| **Github Issue**  | [#9](https://github.com/Superalgos/ALGOToken/issues/9)  |
-| **Source**  | Code Review |
-| **Status**  | Open - discussion  |
-| **Locations** | AlgoMiner.sol(L:16) |
-
-**Description:** In the business logic, we need the AlgoMiner to mine on a daily basis, but we don't need to be highly precise as long as the function runs once a day. However, as the contract sits immutable on the block chain, over the course of time, the hardcoded cycle of a year `uint256 public constant DAYS_PER_YEAR = 365;` will become progressively further out of sync with perceived time.
-
----
-
 ### Provide an error message for require()
 
 |   |   |

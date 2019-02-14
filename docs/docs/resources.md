@@ -8,9 +8,9 @@ Resources used in analysis.
 
 ## Source Code
 
-- [ALGO Smart Contracts Explorer](): The repo for this documentation including tooling for NodeJS, unit and integration tests with truffle, and more!
-
 - [Main ALGO Smart Contract Repo](https://github.com/Superalgos/ALGOToken/): Main source for the Algo Smart Contract Development. Contract development tools use .Net/C#. Authored by [pmmax](https://github.com/pmmax).
+
+- [ALGO Smart Contracts Explorer](https://github.com/Superalgos/ALGOToken-NodeJS): The repo for this documentation including tooling for NodeJS, unit and integration tests with truffle, and more!
 
 ## Best Practices
 
@@ -83,7 +83,7 @@ Solidity is the language used for the ALGO Smart Contracts. Current version in u
 - [Docusaurus](https://docusaurus.io/): Documentation framework used for this documentation website.
 - [Refactor Solidity 0.4.x -> 0.5x](https://mudit.blog/tool-refactor-your-solidity-0-4-x-code-to-solidity-0-5-x-code/)
 - [Summary of Ethereum Upgradeable Smart Contract R&D](https://blog.indorse.io/ethereum-upgradeable-smart-contract-strategies-456350d0557c)
-- [Ropsten Testnet ETH Faucet](https://faucet.ropsten.be/)
+- [Ropsten Testnet ETH Faucet](https://faucet.ropsten.be/) | [Ropsten Throttled Testnet Faucet](https://ipfs.io/ipfs/QmVAwVKys271P5EQyEfVSxm7BJDKWt42A2gHvNmxLjZMps/)
 - [ETH Gas Station](https://ethgasstation.info/)
 - [etheratom](https://github.com/0mkara/etheratom): Solidity compilation and Ethereum contract execution interface for atom editor  
 

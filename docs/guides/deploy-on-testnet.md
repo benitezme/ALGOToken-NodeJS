@@ -5,13 +5,25 @@ title: Deploying on a Testnet
 
  Deploying the smart contract on a testnet is as close to a real deploy and an essential part to complete testing. You don’t have to pay real ether to interact with the ethereum blockchain and get a real feel of the flow from an end-user’s perspective.
 
- This guide will use the Ropsten test ethereum network via the Infura provider as well as an account created via MetaMask. Finally, the contracts will be deployed and tested with Remix.
+ We will use the Ropsten test ethereum network via the Infura provider as well as an account created via MetaMask. Finally, the contracts can be deployed and tested with Remix or with Truffle.
+ 
+The initial setup of getting the Infura provider and Metamask ready is best done following the [Deploying on remix guide](#deploying-on-remix). 
 
-## Deploying
+Then if you choose, you can also experiment by [deploying through Truffle](#deploying-with-truffle). 
+
+Final note, to deploy on the mainnet isn't that much different except changing the network provider endpoint and creating a mainnet external address and purchasing/transferring some Ether to it. 
+
+## Deploying on Remix
 
  Follow this tutorial (it already has nice screenshots to make things easy): [Deploy Smart Contracts on Ropsten Testnet Through Ethereum Remix](https://medium.com/swlh/deploy-smart-contracts-on-ropsten-testnet-through-ethereum-remix-233cd1494b4b). The main difference will be using our flattened Algo Smart Contracts found in the `/remix` directory of the [Superalgos/AlgoToken-NodeJs github repo]().
 
- Re-flattening contract instructions are below.
+ Re-flattening contract instructions are [below](#flattening-contracts).
+ 
+## Deploying with Truffle
+
+First off, if you haven't already, you'll need to install Truffle by following the instructions in the [Unit & Integration Tests guide](http://localhost:3000/docs/guides/unit-integration#testing-with-truffle-and-ganache).
+
+Next, you'll need to open up truffle.js located in the root of this documentations repo. Following the comments in that file, you'll be adding your Infura 
 
 ## Flattening Contracts
 
