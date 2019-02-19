@@ -6,7 +6,7 @@ The ALGO Token Smart Contracts are just a first, but extremely vital, step to en
 
 This repository is the NodeJS-based exploration of the ALGO Token Smart contracts with the original contracts and .Net development tools to be found in the main [Superalgos ALGOToken Github repo](https://github.com/Superalgos/ALGOToken).
 
-To help future contract explorers and auditors dive into the smart contracts, an attempt to provide deep documentation as well as testing and development tools is included in this repo. Documentation can be viewed at [https://algotokensmarkcontracts.netlify.com](https://algotokensmarkcontracts.netlify.com) or run locally.
+To help future contract explorers and auditors dive into the smart contracts, an attempt to provide deep documentation as well as testing and development tools is included in this repo. Documentation can be viewed at [https://smartcontracts.superalgos.org/](https://smartcontracts.superalgos.org/) or run locally.
 
 ## Testing setup
 
