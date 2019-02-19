@@ -40,6 +40,8 @@ Solidity is the language used for the ALGO Smart Contracts. Current version in u
 - [geth: Official Golang implementation of the Ethereum protocol](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Mac)
 - [Infura](https://infura.io): Ethereum provider that provides easy access to Ethereum and IPFS nodes via an API as opposed to setting up an Ethereum node. 
 - [Metamask](https://metamask.io/): Browser-based bridge that allows access to Ethereum.
+- [Ethereum Block Explorer](https://etherscan.io/): Explore transactions on the Ethereum Mainnet
+- [Ropsten Ethereum Block Explorer](https://ropsten.etherscan.io/): Explore transactions on the Ropsten Testnet
 - [solidity-coverage](https://github.com/sc-forks/solidity-coverage): Code coverage for Solidity testing.
 - [Buidler](https://github.com/nomiclabs/buidler): Truffle-alternative smart contract development framework
 
@@ -60,6 +62,13 @@ Solidity is the language used for the ALGO Smart Contracts. Current version in u
 - [not-so-smart-contracts](https://github.com/trailofbits/not-so-smart-contracts): Examples of Solidity security issues
 - [OWASP Risk Rating Methodology](https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology): Methodology for estimating severity of risks to associated business. 
 
+#### Vulnerabilities
+- [HackPedia: 16 Solidity Hacks/Vulnerabilities, their Fixes and Real World Examples](https://hackernoon.com/hackpedia-16-solidity-hacks-vulnerabilities-their-fixes-and-real-world-examples-f3210eba5148)
+- [Overflow & Underflow Attacks](https://blockgeeks.com/guides/underflow-attacks-smart-contracts/)
+- [Solidity: Transaction-Ordering Attacks](https://medium.com/coinmonks/solidity-transaction-ordering-attacks-1193a014884e)
+- [Solidity 0.4.24 Bugs](https://solidity.readthedocs.io/en/v0.4.24/bugs.html)
+- []()
+
 #### Linters
 - [EthLint](https://www.ethlint.com/): Linter to identify and fix style & security issues in Solidity
 
@@ -76,6 +85,10 @@ Solidity is the language used for the ALGO Smart Contracts. Current version in u
 #### Upgradeability
 - [ZepplinOS Upgrade Patterns](https://docs.zeppelinos.org/docs/pattern.html)
 - [Upgradeable Contracts with ZeppelinOS](https://blog.zeppelinos.org/testing-real-world-contract-upgrades/)
+
+#### Learning
+- [Capture the Ether](https://capturetheether.com/challenges/)
+- [Cryptozombies](https://cryptozombies.io/)
 
 #### Miscellaneous
 - [Bytecode Verifier](https://www.npmjs.com/package/eth-bytecode-verifier): A handy CLI tool for verifying locally compiled bytecode of a target Solidity contract against its actual bytecode stored in Etheruem Blockchain provided its contract address.
