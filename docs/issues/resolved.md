@@ -67,3 +67,26 @@ Note: All 'Implicit visibility level' issues flagged in [SmartCheck Analysis](ht
 
 ---
 
+### Algopool "trasferToMiner" function spelling
+
+|   |   |
+|---|---|
+| **Github Issue**  | [#7](https://github.com/Superalgos/ALGOToken/issues/7)  |
+| **Source**  | Code Review |
+| **Status**  | fixed by [PR #8](https://github.com/Superalgos/ALGOToken/pull/8)  |
+| **Locations** | AlgoMiner.sol(L:16) |
+
+**Description:** In AlgoPool.sol (labs/algo-token-distribution/src/AdvancedAlgos.AlgoToken.AlgoTokenDistribution/SmartContracts/src/AlgoPool.sol):
+
+```
+#line 29
+function trasferToMiner(address minerAddress) public notTerminated onlyCoreTeam {
+```
+
+to
+
+```
+function transferToMiner(address minerAddress) public notTerminated onlyCoreTeam {
+```
+
+Update tests in AlgoPoolTests.cs (labs/algo-token-distribution/test/AdvancedAlgos.AlgoToken.AlgoTokenDistribution.IntegrationTests/AlgoPoolTests.cs)

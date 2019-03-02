@@ -11,10 +11,10 @@ When a contract inherits from multiple contracts, only a single contract is crea
 
 Currently, there are four created contracts:
 
-1. **AlgoTokenV1:** ALGO token ledger/hash table
-2. **AlgoMiner:**
-3. **AlgoPool:**
-4. **AlgoFees:**
+1. **AlgoTokenV1:** Mints the ALGO token and manages the token ledger
+2. **AlgoMiner:** Contract deployed for pools of ALGO dedicated to a funding, competition prizes, software development and project development.
+3. **AlgoPool:** Distributes ALGO from the pools based on five different category levels among all the entities that add value to the Superalgos project.
+4. **AlgoFees:** Routes fees collected from the project platform to miners
 
 ### Upgradeability
 
