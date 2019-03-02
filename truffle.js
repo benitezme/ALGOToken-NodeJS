@@ -17,7 +17,9 @@ require('dotenv').config();
 const HDWalletProvider = require('truffle-hdwallet-provider');
 
 const infuraKey = process.env.INFURA_KEY;
-const mnemonic = process.env.MNEMONIC;
+const mnemonic1 = process.env.MNEMONIC1;
+const mnemonic2 = process.env.MNEMONIC2;
+const mnemonic3 = process.env.MNEMONIC3;
 
 module.exports = {
   /**
@@ -58,8 +60,26 @@ module.exports = {
 
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
-    ropsten: {
-      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infuraKey}`),
+    ropsten1: {
+      provider: () => new HDWalletProvider(mnemonic1, `https://ropsten.infura.io/v3/${infuraKey}`),
+      network_id: 3,       // Ropsten's id
+      gas: 5500000,       // Ropsten has a lower block limit than mainnet
+      gasPrice: 20000000000,
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+    },
+    ropsten2: {
+      provider: () => new HDWalletProvider(mnemonic2, `https://ropsten.infura.io/v3/${infuraKey}`),
+      network_id: 3,       // Ropsten's id
+      gas: 5500000,       // Ropsten has a lower block limit than mainnet
+      gasPrice: 20000000000,
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+    },
+    ropsten3: {
+      provider: () => new HDWalletProvider(mnemonic3, `https://ropsten.infura.io/v3/${infuraKey}`),
       network_id: 3,       // Ropsten's id
       gas: 5500000,       // Ropsten has a lower block limit than mainnet
       gasPrice: 20000000000,
