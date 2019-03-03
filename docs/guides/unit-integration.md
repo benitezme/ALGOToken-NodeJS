@@ -23,7 +23,7 @@ npm install
 
 ```
 # In new CLI tab, start Ganache (on port 8545)
-ganache-cli -p 8545
+npm run blockchain-test
 
 # compile smart contracts
 truffle compile

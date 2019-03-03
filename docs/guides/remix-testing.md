@@ -7,9 +7,11 @@ title: Testing with Remix Browser IDE
 
  _Note: One caveat with Remix is that the AlgoToken contracts are built on top of Openzeppelin Standard contracts and compiler version differences will throw errors in the browser IDE. The easiest way around this is to flatten each of the four contracts (AlgoTokenV1, AlgoPool, AlgoMiner, AlgoFees) and then import into Remix. Pre-flattened contracts are included in the remix dir, but if any updates are made to the contracts, they will have to be re-flattened._
 
+ **Note, this guide and flattened contracts have been updated for the upgrade from Solidity compiler v0.4.24 to v0.5.4.**
+
 ### Testing with Remix
 
-1. Open your web browser to the [Remix IDE: https://remix.ethereum.org/#optimize=true&version=soljson-v0.4.24+commit.e67f0147.js](https://remix.ethereum.org/#optimize=true&version=soljson-v0.4.24+commit.e67f0147.js) Note that version 0.4.24 of the solidity compiler should already be selected under the `compile` tab on the upper right.
+1. Open your web browser to the [Remix IDE: https://remix.ethereum.org/#optimize=true&version=soljson-v0.5.4+commit.9549d8ff.js](https://remix.ethereum.org/#optimize=true&version=soljson-v0.5.4+commit.9549d8ff.js) Note that version 0.5.4+commit.9549d8ff of the solidity compiler should already be selected under the `compile` tab on the upper right.
 2. In the upper left, click the `folder` icon to add a local file to the Browser Storage. Navigate to the remix folder in AlgoToken-NodeJs repo (`./ALGOToken-nodejs/remix`). Select `AlgoTokenV1_flat.sol` and click on open.
 3. On the left, under `broswser`, select the *AlgoTokenV1_flat.sol* contract, then in the `compile` tab (should be selected, otherwise choose in upper right), click on `Start to compile`
 4. Several errors in purple boxes will show as well as the compiled contract names in cyan boxes. Ignore for now and click on the `Run` tab in the upper right.
