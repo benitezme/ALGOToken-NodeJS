@@ -1,107 +1,103 @@
-pragma solidity 0.4.24;
 
 // File: openzeppelin-solidity/contracts/token/ERC20/IERC20.sol
+
+pragma solidity ^0.5.0;
 
 /**
  * @title ERC20 interface
  * @dev see https://github.com/ethereum/EIPs/issues/20
  */
 interface IERC20 {
-  function totalSupply() external view returns (uint256);
+    function transfer(address to, uint256 value) external returns (bool);
 
-  function balanceOf(address who) external view returns (uint256);
+    function approve(address spender, uint256 value) external returns (bool);
 
-  function allowance(address owner, address spender)
-    external view returns (uint256);
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
 
-  function transfer(address to, uint256 value) external returns (bool);
+    function totalSupply() external view returns (uint256);
 
-  function approve(address spender, uint256 value)
-    external returns (bool);
+    function balanceOf(address who) external view returns (uint256);
 
-  function transferFrom(address from, address to, uint256 value)
-    external returns (bool);
+    function allowance(address owner, address spender) external view returns (uint256);
 
-  event Transfer(
-    address indexed from,
-    address indexed to,
-    uint256 value
-  );
+    event Transfer(address indexed from, address indexed to, uint256 value);
 
-  event Approval(
-    address indexed owner,
-    address indexed spender,
-    uint256 value
-  );
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-// File: /Users/barrylow/Business/AdvancedAlgos/brand/ALGOToken-nodejs-client/node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol
+// File: openzeppelin-solidity/contracts/math/SafeMath.sol
+
+pragma solidity ^0.5.0;
 
 /**
  * @title SafeMath
- * @dev Math operations with safety checks that revert on error
+ * @dev Unsigned math operations with safety checks that revert on error
  */
 library SafeMath {
+    /**
+    * @dev Multiplies two unsigned integers, reverts on overflow.
+    */
+    function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+        // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
+        // benefit is lost if 'b' is also tested.
+        // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522
+        if (a == 0) {
+            return 0;
+        }
 
-  /**
-  * @dev Multiplies two numbers, reverts on overflow.
-  */
-  function mul(uint256 a, uint256 b) internal pure returns (uint256) {
-    // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
-    // benefit is lost if 'b' is also tested.
-    // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522
-    if (a == 0) {
-      return 0;
+        uint256 c = a * b;
+        require(c / a == b);
+
+        return c;
     }
 
-    uint256 c = a * b;
-    require(c / a == b);
+    /**
+    * @dev Integer division of two unsigned integers truncating the quotient, reverts on division by zero.
+    */
+    function div(uint256 a, uint256 b) internal pure returns (uint256) {
+        // Solidity only automatically asserts when dividing by 0
+        require(b > 0);
+        uint256 c = a / b;
+        // assert(a == b * c + a % b); // There is no case in which this doesn't hold
 
-    return c;
-  }
+        return c;
+    }
 
-  /**
-  * @dev Integer division of two numbers truncating the quotient, reverts on division by zero.
-  */
-  function div(uint256 a, uint256 b) internal pure returns (uint256) {
-    require(b > 0); // Solidity only automatically asserts when dividing by 0
-    uint256 c = a / b;
-    // assert(a == b * c + a % b); // There is no case in which this doesn't hold
+    /**
+    * @dev Subtracts two unsigned integers, reverts on overflow (i.e. if subtrahend is greater than minuend).
+    */
+    function sub(uint256 a, uint256 b) internal pure returns (uint256) {
+        require(b <= a);
+        uint256 c = a - b;
 
-    return c;
-  }
+        return c;
+    }
 
-  /**
-  * @dev Subtracts two numbers, reverts on overflow (i.e. if subtrahend is greater than minuend).
-  */
-  function sub(uint256 a, uint256 b) internal pure returns (uint256) {
-    require(b <= a);
-    uint256 c = a - b;
+    /**
+    * @dev Adds two unsigned integers, reverts on overflow.
+    */
+    function add(uint256 a, uint256 b) internal pure returns (uint256) {
+        uint256 c = a + b;
+        require(c >= a);
 
-    return c;
-  }
+        return c;
+    }
 
-  /**
-  * @dev Adds two numbers, reverts on overflow.
-  */
-  function add(uint256 a, uint256 b) internal pure returns (uint256) {
-    uint256 c = a + b;
-    require(c >= a);
-
-    return c;
-  }
-
-  /**
-  * @dev Divides two numbers and returns the remainder (unsigned integer modulo),
-  * reverts when dividing by zero.
-  */
-  function mod(uint256 a, uint256 b) internal pure returns (uint256) {
-    require(b != 0);
-    return a % b;
-  }
+    /**
+    * @dev Divides two unsigned integers and returns the remainder (unsigned integer modulo),
+    * reverts when dividing by zero.
+    */
+    function mod(uint256 a, uint256 b) internal pure returns (uint256) {
+        require(b != 0);
+        return a % b;
+    }
 }
 
 // File: openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol
+
+pragma solidity ^0.5.0;
+
+
 
 /**
  * @title SafeERC20
@@ -110,68 +106,38 @@ library SafeMath {
  * which allows you to call the safe operations as `token.safeTransfer(...)`, etc.
  */
 library SafeERC20 {
+    using SafeMath for uint256;
 
-  using SafeMath for uint256;
+    function safeTransfer(IERC20 token, address to, uint256 value) internal {
+        require(token.transfer(to, value));
+    }
 
-  function safeTransfer(
-    IERC20 token,
-    address to,
-    uint256 value
-  )
-    internal
-  {
-    require(token.transfer(to, value));
-  }
+    function safeTransferFrom(IERC20 token, address from, address to, uint256 value) internal {
+        require(token.transferFrom(from, to, value));
+    }
 
-  function safeTransferFrom(
-    IERC20 token,
-    address from,
-    address to,
-    uint256 value
-  )
-    internal
-  {
-    require(token.transferFrom(from, to, value));
-  }
+    function safeApprove(IERC20 token, address spender, uint256 value) internal {
+        // safeApprove should only be called when setting an initial allowance,
+        // or when resetting it to zero. To increase and decrease it, use
+        // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
+        require((value == 0) || (token.allowance(address(this), spender) == 0));
+        require(token.approve(spender, value));
+    }
 
-  function safeApprove(
-    IERC20 token,
-    address spender,
-    uint256 value
-  )
-    internal
-  {
-    // safeApprove should only be called when setting an initial allowance,
-    // or when resetting it to zero. To increase and decrease it, use
-    // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'
-    require((value == 0) || (token.allowance(msg.sender, spender) == 0));
-    require(token.approve(spender, value));
-  }
+    function safeIncreaseAllowance(IERC20 token, address spender, uint256 value) internal {
+        uint256 newAllowance = token.allowance(address(this), spender).add(value);
+        require(token.approve(spender, newAllowance));
+    }
 
-  function safeIncreaseAllowance(
-    IERC20 token,
-    address spender,
-    uint256 value
-  )
-    internal
-  {
-    uint256 newAllowance = token.allowance(address(this), spender).add(value);
-    require(token.approve(spender, newAllowance));
-  }
-
-  function safeDecreaseAllowance(
-    IERC20 token,
-    address spender,
-    uint256 value
-  )
-    internal
-  {
-    uint256 newAllowance = token.allowance(address(this), spender).sub(value);
-    require(token.approve(spender, newAllowance));
-  }
+    function safeDecreaseAllowance(IERC20 token, address spender, uint256 value) internal {
+        uint256 newAllowance = token.allowance(address(this), spender).sub(value);
+        require(token.approve(spender, newAllowance));
+    }
 }
 
-// File: /Users/barrylow/Business/AdvancedAlgos/brand/ALGOToken-nodejs-client/contracts/core/IAlgoMiner.sol
+// File: contracts/core/IAlgoMiner.sol
+
+pragma solidity 0.5.4;
 
 contract IAlgoMiner {
     function isAlgoMiner() public pure returns (bool);
@@ -182,7 +148,9 @@ contract IAlgoMiner {
     function isMining() public view returns (bool);
 }
 
-// File: /Users/barrylow/Business/AdvancedAlgos/brand/ALGOToken-nodejs-client/contracts/core/Terminable.sol
+// File: contracts/core/Terminable.sol
+
+pragma solidity 0.5.4;
 
 contract Terminable {
 
@@ -204,7 +172,12 @@ contract Terminable {
     }
 }
 
-// File: /Users/barrylow/Business/AdvancedAlgos/brand/ALGOToken-nodejs-client/contracts/core/ERC20TokenHolder.sol
+// File: contracts/core/ERC20TokenHolder.sol
+
+pragma solidity 0.5.4;
+
+
+
 
 contract ERC20TokenHolder is Terminable {
     using SafeERC20 for IERC20;
@@ -226,50 +199,51 @@ contract ERC20TokenHolder is Terminable {
 
 // File: openzeppelin-solidity/contracts/access/Roles.sol
 
+pragma solidity ^0.5.0;
+
 /**
  * @title Roles
  * @dev Library for managing addresses assigned to a Role.
  */
 library Roles {
-  struct Role {
-    mapping (address => bool) bearer;
-  }
+    struct Role {
+        mapping (address => bool) bearer;
+    }
 
-  /**
-   * @dev give an account access to this role
-   */
-  function add(Role storage role, address account) internal {
-    require(account != address(0));
-    require(!has(role, account));
+    /**
+     * @dev give an account access to this role
+     */
+    function add(Role storage role, address account) internal {
+        require(account != address(0));
+        require(!has(role, account));
 
-    role.bearer[account] = true;
-  }
+        role.bearer[account] = true;
+    }
 
-  /**
-   * @dev remove an account's access to this role
-   */
-  function remove(Role storage role, address account) internal {
-    require(account != address(0));
-    require(has(role, account));
+    /**
+     * @dev remove an account's access to this role
+     */
+    function remove(Role storage role, address account) internal {
+        require(account != address(0));
+        require(has(role, account));
 
-    role.bearer[account] = false;
-  }
+        role.bearer[account] = false;
+    }
 
-  /**
-   * @dev check if an account has this role
-   * @return bool
-   */
-  function has(Role storage role, address account)
-    internal
-    view
-    returns (bool)
-  {
-    require(account != address(0));
-    return role.bearer[account];
-  }
+    /**
+     * @dev check if an account has this role
+     * @return bool
+     */
+    function has(Role storage role, address account) internal view returns (bool) {
+        require(account != address(0));
+        return role.bearer[account];
+    }
 }
 
-// File: /Users/barrylow/Business/AdvancedAlgos/brand/ALGOToken-nodejs-client/contracts/core/AlgoSystemRole.sol
+// File: contracts/core/AlgoSystemRole.sol
+
+pragma solidity 0.5.4;
+
 
 contract AlgoSystemRole {
     using Roles for Roles.Role;
@@ -306,7 +280,10 @@ contract AlgoSystemRole {
     }
 }
 
-// File: /Users/barrylow/Business/AdvancedAlgos/brand/ALGOToken-nodejs-client/contracts/core/AlgoCoreTeamRole.sol
+// File: contracts/core/AlgoCoreTeamRole.sol
+
+pragma solidity 0.5.4;
+
 
 contract AlgoCoreTeamRole {
     using Roles for Roles.Role;
@@ -345,15 +322,23 @@ contract AlgoCoreTeamRole {
 
 // File: contracts/core/AlgoFees.sol
 
+pragma solidity 0.5.4;
+
+
+
+
+
+
+
 contract AlgoFees is ERC20TokenHolder, AlgoSystemRole, AlgoCoreTeamRole {
     using SafeERC20 for IERC20;
 
-    uint256 constant CAT_0_VALUE_PROPORTION = 1;
-    uint256 constant CAT_1_VALUE_PROPORTION = 10;
-    uint256 constant CAT_2_VALUE_PROPORTION = 20;
-    uint256 constant CAT_3_VALUE_PROPORTION = 30;
-    uint256 constant CAT_4_VALUE_PROPORTION = 40;
-    uint256 constant CAT_5_VALUE_PROPORTION = 50;
+    uint256 private constant CAT_0_VALUE_PROPORTION = 1;
+    uint256 private constant CAT_1_VALUE_PROPORTION = 10;
+    uint256 private constant CAT_2_VALUE_PROPORTION = 20;
+    uint256 private constant CAT_3_VALUE_PROPORTION = 30;
+    uint256 private constant CAT_4_VALUE_PROPORTION = 40;
+    uint256 private constant CAT_5_VALUE_PROPORTION = 50;
 
     address[] private _miners;
     mapping(address => uint256) private _minersByAddress;
@@ -371,12 +356,12 @@ contract AlgoFees is ERC20TokenHolder, AlgoSystemRole, AlgoCoreTeamRole {
         require(_minersByAddress[minerAddress] == 0);
 
         IAlgoMiner algoMiner = IAlgoMiner(minerAddress);
-
+        
         require(algoMiner.isAlgoMiner());
-
+        
         uint8 minerCategory = algoMiner.getCategory();
 
-        require(minerCategory >= 0 && minerCategory <= 5);
+        require(minerCategory <= 5);
 
         _minersByAddress[minerAddress] = _miners.length;
         _miners.push(minerAddress);
@@ -386,21 +371,19 @@ contract AlgoFees is ERC20TokenHolder, AlgoSystemRole, AlgoCoreTeamRole {
         require(_miners.length > 1);
 
         if(_miners.length == 2) {
-
+        
             // Just remove the only registered miner...
-            delete _miners[1];
-            _miners.length = 1;
+            _miners.pop();
             delete _minersByAddress[minerAddress];
-
+        
         } else {
-
+            
             if(_minersByAddress[minerAddress] != _miners.length) {
-                // Move the latest miner to the gap...
+                // Move the latest miner to the gap... 
                 _miners[_minersByAddress[minerAddress]] = _miners[_miners.length - 1];
             }
 
-            delete _miners[_miners.length - 1];
-            _miners.length--;
+            _miners.pop();
             delete _minersByAddress[minerAddress];
         }
     }
@@ -414,8 +397,9 @@ contract AlgoFees is ERC20TokenHolder, AlgoSystemRole, AlgoCoreTeamRole {
 
         // Count how many ENABLED miners we have for each category...
         uint256[6] memory miners;
+        uint256 minerCount = _miners.length;
 
-        for(uint256 i = 1; i < _miners.length; i++) {
+        for(uint256 i = 1; i < minerCount; i++) {
             IAlgoMiner algoMiner = IAlgoMiner(_miners[i]);
 
             if(!algoMiner.isMining()) continue;
@@ -434,7 +418,7 @@ contract AlgoFees is ERC20TokenHolder, AlgoSystemRole, AlgoCoreTeamRole {
                 miners[4]++;
             } else if(minerCategory == 5) {
                 miners[5]++;
-            }
+            }            
         }
 
         // Calculate the fee to pay per miner according to its category...
@@ -444,7 +428,7 @@ contract AlgoFees is ERC20TokenHolder, AlgoSystemRole, AlgoCoreTeamRole {
             CAT_3_VALUE_PROPORTION * miners[3] +
             CAT_4_VALUE_PROPORTION * miners[4] +
             CAT_5_VALUE_PROPORTION * miners[5];
-
+        
         uint256[6] memory feePerMiner;
 
         feePerMiner[0] = currentFeesBalance * CAT_0_VALUE_PROPORTION / totalProportion;
@@ -455,12 +439,12 @@ contract AlgoFees is ERC20TokenHolder, AlgoSystemRole, AlgoCoreTeamRole {
         feePerMiner[5] = currentFeesBalance * CAT_5_VALUE_PROPORTION / totalProportion;
 
         // Transfer the fees to ENABLED miners...
-        for(i = 1; i < _miners.length; i++) {
-            algoMiner = IAlgoMiner(_miners[i]);
+        for(uint256 i = 1; i < minerCount; i++) {
+            IAlgoMiner algoMiner = IAlgoMiner(_miners[i]);
 
             if(!algoMiner.isMining()) continue;
 
-            minerCategory = algoMiner.getCategory();
+            uint8 minerCategory = algoMiner.getCategory();
 
 			_token.safeTransfer(algoMiner.getMiner(), feePerMiner[minerCategory]);
         }
