@@ -3,7 +3,7 @@ id: issues
 title: Overview
 ---
 
-Issues are problems or vulnerabilities with the smart contracts. They are ranked and organized by severity. Closed issues are archived in the [resolved] section.
+Issues are problems or vulnerabilities with the smart contracts. They are ranked and organized by severity. Closed issues are archived in the [resolved](issues/resolved.md) section.
 
 ## Risk Rating
 
@@ -16,14 +16,6 @@ Determination guidelines are as follows:
 - **Low Risk**: Not about fund or information lost. Minor problems or improvements, e.g. such as gas efficiency.
 
 ## Other Issues
-
-### Solidity Versions: Upgrade from v4 to v5?
-
-Smart contract technology is young and not considered completely stable, secure and reliable. At the same time, the tech and tools are rapidly evolving. Should the currently developed contracts be upgraded to the latest version of solidity. While newer versions of the compiler fixes and evolves issues, there’s the potential that it will introduce a breaking change or even new vulnerability in the change while also adding to the overhead of development and testing. Notes:
-- The contracts inherent many contracts from OpenZeppelin who develop, test and maintain their contracts at the latest stable versions of solidity. 
-- A cursory review shows that breaking changes in the upgrade would be issues of semantics (eg, using `.pop` instead of `--`) or declaration specificity (eg specifically declaring that a variable is memory or storage). No deprecated methods or implementations with known vulnerabilities are used.
-- Is there enough argument for diligence and/or concern of potential unforeseen issues to warrant the overhead costs of development and testing to upgrade?
-
 
 ### Upgradeability
 
