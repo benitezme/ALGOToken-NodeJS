@@ -21,6 +21,22 @@ The Algo Miner contract (AlgoPool.sol) is responsible for creating and managing 
 - [IERC20](https://openzeppelin.org/api/docs/token_ERC20_IERC20.html)
 - [SafeERC20](https://openzeppelin.org/api/docs/token_ERC20_SafeERC20.html)
 
+### Data stored in contract
+
+- Address of the ERC20 AlgoToken
+- Miner type (PoolBased, NonPoolBased)
+- Miner category
+- Miner account address;
+- Referral account address;
+- Miner state (Deactivated, Activated, Suspended, Stopped)
+- Mining state (is mining or not)
+- Current year and day of the mining lifecycle
+- Tokens supply for the current year
+- List of AlgoSystemRole users (addresses)
+- List of AlgoCoreTeamRole users (addresses)
+- List of AlgoSupervisorRole users (addresses)
+- Termination state and creator's address
+
 ### Public Functions
 
 **Calls**

@@ -3,35 +3,26 @@ id: algo-common
 title: ALGO Common Contract
 ---
 
-The Algo Pool contract (AlgoPool.sol) is responsible for creating and managing pools — the "places" where tokens go after being issued.
+The Algo Common contract provides the token allottments for the six different miner categories.
 
-### Miner Pool Types
-1. Software Development: It includes only software-development type of responsibilities.  
-2. Project Development: It includes only project-development type of responsibilities.
+[Source](https://github.com/Superalgos/ALGOToken/blob/master/labs/algo-token-distribution/src/AdvancedAlgos.AlgoToken.AlgoTokenDistribution/SmartContracts/src/AlgoCommon.sol)
 
-### Miner Pool Capacity
+### Allottments
 
-1. Cat 0: Can distribute 0.1M ALGO tokens received from the Pool. Mines 1/10 of the fees of a Cat 1 ALGO Miner.
-2. Cat 1: Can distribute 1M ALGO tokens received from the Pool.
-3. Cat 2: Can distribute 2M ALGO tokens received from the Pool. Mines 2 times the fees of a Cat 1 ALGO Miner.
-4. Cat 3: Can distribute 3M ALGO tokens received from the Pool. Mines 3 times the fees of a Cat 1 ALGO Miner.
-5. Cat 4: Can distribute 4M ALGO tokens received from the Pool. Mines 4 times the fees of a Cat 1 ALGO Miner.
-6. Cat 5: Can distribute 5M ALGO tokens received from the Pool. Mines 5 times the fees of a Cat 1 ALGO Miner.
+| Category |  Allottment |
+|---|---|
+|  0  | 100000 |
+|  1  | 1000000 |
+|  2  | 2000000 |
+|  3  | 3000000 |
+|  4  | 4000000 |
+|  5  | 5000000 |
 
-[Source](https://github.com/Superalgos/ALGOToken/blob/master/labs/algo-erc20-token/src/AdvancedAlgos.AlgoToken.AlgoErc20Token/SmartContracts/src/AlgoTokenV1.sol)
+### Notes
 
-#### Dependencies
-Uses three OpenZepplin contracts:
+1. Because the token has 18 decimals, we use a token factor of 10 to the power of 18, or as written in the contract:
 
-- [ERC20](https://openzeppelin.org/api/docs/token_ERC20_ERC20.html)
-- [ERC20Detailed](https://openzeppelin.org/api/docs/token_ERC20_ERC20Detailed.html)
-- [ERC20Pausable](https://openzeppelin.org/api/docs/token_ERC20_ERC20Pausable.html)
+```
+uint256 internal constant TOKEN_FACTOR = 10 ** uint256(18);
+```
 
-#### Notes
-
-1. Contract is deployed with no parameters
-2. Constructor (ln 10-15): Run once on contract creation. Token create with:
-	- Name: Algos
-	- Symbol: ALGO
-	- Decimal length: 18
-	- Initial supply: 1000000000000000000000000000

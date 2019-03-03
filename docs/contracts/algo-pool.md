@@ -19,6 +19,14 @@ The Algo Pool contract (AlgoPool.sol) is responsible for creating and managing m
 - [IERC20](https://openzeppelin.org/api/docs/token_ERC20_IERC20.html)
 - [SafeERC20](https://openzeppelin.org/api/docs/token_ERC20_SafeERC20.html)
 
+### Data stored in contract
+
+- Address of the ERC20 AlgoToken
+- Pool type (MinerPool, ReferralPool)
+- List of funded miners, who already received funds from this pool (addresses)
+- List of AlgoCoreTeamRole users (addresses)
+- Termination state and creator's address
+
 ### Public Functions
 
 **Calls**
@@ -34,4 +42,4 @@ The Algo Pool contract (AlgoPool.sol) is responsible for creating and managing m
 
 ### Notes
 
-1. transferToMiner reverts when called in NodeJS and Remix environment. Cause currently unknown. 
+1. ~~transferToMiner reverts when called in NodeJS and Remix environment. Cause currently unknown.~~ Issue probably occured from mixing up usage of external address with contract address. 
