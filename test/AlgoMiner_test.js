@@ -1,3 +1,5 @@
+import BN from 'bn.js'
+
 import { catchRevert } from '../helpers/exceptions.js'
 
 const AlgoTokenV1 = artifacts.require('AlgoTokenV1')
@@ -8,7 +10,8 @@ contract('AlgoMiner', async accounts => {
   // general accounts
   const tokenOwnerAccount = accounts[0]
   const coreTeamAccount = accounts[1]
-  const referralAccount = accounts[2]
+  const poolAccount = accounts[2]
+  const referralAccount = accounts[3]
 
   // miner ETH accounts
   let miner0 = accounts[4]
@@ -25,30 +28,31 @@ contract('AlgoMiner', async accounts => {
   let pool2InstanceAddress
   let minerContractCat0Address
 
-  describe('Pool contract', async () => {
+  describe('Miner contract', async () => {
     // Setup and deploy contracts
     before(async () => {
       return new Promise(resolve => {
         setTimeout(async () => {
           tokenInstance = await AlgoTokenV1.deployed()
           tokenInstanceAddress = await tokenInstance.address
-          console.log('tokenInstanceAddress: ', await tokenInstanceAddress)
 
           // deploy AlgoPool contracts
-          pool1Instance = await AlgoPool.new(0, tokenInstanceAddress)
-          console.log('poolInstance: ', await pool1Instance)
+          pool1Instance = await AlgoPool.new(0, tokenInstanceAddress, { from: coreTeamAccount })
           pool1InstanceAddress = await pool1Instance.address
-          console.log('poolInstanceAddress: ', await pool1InstanceAddress)
 
-          pool2Instance = await AlgoPool.new(0, tokenInstanceAddress)
+          pool2Instance = await AlgoPool.new(0, tokenInstanceAddress, { from: poolAccount })
           pool2InstanceAddress = await pool2Instance.address
-          console.log('poolInstanceAddress: ', await pool2InstanceAddress)
 
           // Deploy miner contracts for each category
           minerContractCat0 = await AlgoMiner.new(0, 0, miner0, referralAccount, tokenInstanceAddress)
-          // console.log('Miner Cat0: ', minerContractCat0)
           minerContractCat0Address = minerContractCat0.address
-          console.log('minerContractCat0Address: ', await minerContractCat0Address)
+
+          const mult = new BN(100 * 1000000)
+          const base = new BN(10)
+          const power = new BN(18)
+          const transferAmount = mult.mul(base.pow(power))
+          await tokenInstance.transfer(pool1InstanceAddress, transferAmount)
+          await tokenInstance.transfer(pool2InstanceAddress, transferAmount)
 
           resolve()
         }, 10000)
@@ -70,27 +74,29 @@ contract('AlgoMiner', async accounts => {
       let isMining = await minerContractCat0.isMining()
       assert.isFalse(isMining)
     })
+    describe('Funding a Miner', async () => {
+      it('Miner Category 0 balance = 1000000 * 10^18 ALGO ', async () => {
+        let poolBalanceB4T = await tokenInstance.balanceOf(pool1InstanceAddress)
+        console.log('Miner Cat0 Pre-Pool balance: ', await poolBalanceB4T.toString())
 
-    it('Miner Category 0 balance = 1000000 ALGO ', async () => {
-      console.log('Pool Instance Address at Cat0: ', await pool1InstanceAddress)
-      console.log('Miner Cat0 Address: ', await minerContractCat0Address)
-
-      let transfer = await tokenInstance.transfer(pool1InstanceAddress, 1000000000000)
-      assert.exists(transfer.tx)
-
-      let poolBalanceB4T = await tokenInstance.balanceOf(pool1InstanceAddress)
-      console.log('poolBalance before transfer: ', await poolBalanceB4T.toString())
-      let minerPoolBalancePre = await tokenInstance.balanceOf(minerContractCat0Address)
-      console.log('Miner Cat0 pre-transfer balance: ', await minerPoolBalancePre.toString())
-      let poolTransferToMiner = await pool1Instance.transferToMiner(minerContractCat0Address)
-      console.log('Transfer to Cat0: ', await poolTransferToMiner)
-
-      let poolBalanceA = await tokenInstance.balanceOf(pool1InstanceAddress)
-      console.log('poolBalance after transfer: ', await poolBalanceA.toString())
-      let minerPoolBalancePost = await tokenInstance.balanceOf(minerContractCat0Address)
-      console.log('Miner Cat0 Post balance: ', await minerPoolBalancePost.toString())
-
-      assert.equal(100000, await tokenInstance.balanceOf(minerContractCat0Address))
+        let poolTransferToMiner = await pool1Instance.transferToMiner(minerContractCat0Address,
+          { from: coreTeamAccount }
+        )
+        console.log('poolTransferToMiner: ', await poolTransferToMiner)
+        let minerPoolBalancePost = await tokenInstance.balanceOf(minerContractCat0Address)
+        console.log('Miner Cat0 Post balance: ', await minerPoolBalancePost.toString())
+        const mult = new BN(100000)
+        const base = new BN(10)
+        const power = new BN(18)
+        const cat0Amount = mult.mul(base.pow(power))
+        console.log('cat0Amount: ', cat0Amount.toString())
+        assert.equal(cat0Amount.toString(), await minerPoolBalancePost.toString())
+      })
+      it('Funded miner should revert', async () => {
+        await catchRevert(pool1Instance.transferToMiner(minerContractCat0Address,
+          { from: coreTeamAccount }
+        ))
+      })
     })
   })
 })

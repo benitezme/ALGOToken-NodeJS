@@ -88,6 +88,7 @@ Solidity is the language used for the ALGO Smart Contracts. Current version in u
 #### Learning
 - [Capture the Ether](https://capturetheether.com/challenges/)
 - [Cryptozombies](https://cryptozombies.io/)
+- [Ethernaut](https://ethernaut.zeppelin.solutions/)
 
 #### Miscellaneous
 - [Bytecode Verifier](https://www.npmjs.com/package/eth-bytecode-verifier): A handy CLI tool for verifying locally compiled bytecode of a target Solidity contract against its actual bytecode stored in Etheruem Blockchain provided its contract address.

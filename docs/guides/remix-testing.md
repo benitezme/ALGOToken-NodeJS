@@ -3,13 +3,13 @@ id: remix-testing
 title: Testing with Remix Browser IDE
 ---
 
- Remix is an IDE for experimenting with smart-contracts in the browser - it comes with an editor and options to simulate deploying contracts and calling functions on them.
+ Remix is an IDE for experimenting with smart-contracts in the browser - it comes with an editor and options to simulate deploying contracts and calling functions on them. For any issues, please first check out the [Remix Documentation](https://remix.readthedocs.io/en/latest/index.html)!
 
  _Note: One caveat with Remix is that the AlgoToken contracts are built on top of Openzeppelin Standard contracts and compiler version differences will throw errors in the browser IDE. The easiest way around this is to flatten each of the four contracts (AlgoTokenV1, AlgoPool, AlgoMiner, AlgoFees) and then import into Remix. Pre-flattened contracts are included in the `remix` directory in the repo root, but if any changes are made to the contracts, they will have to be re-flattened._
 
  **Note, this guide and flattened contracts have been updated for the upgrade from Solidity compiler v0.4.24 to v0.5.4.**
 
-### Testing with Remix
+## Testing with Remix
 
 1. Open your web browser to the [Remix IDE: https://remix.ethereum.org/#optimize=true&version=soljson-v0.5.4+commit.9549d8ff.js](https://remix.ethereum.org/#optimize=true&version=soljson-v0.5.4+commit.9549d8ff.js) Note that version 0.5.4+commit.9549d8ff of the solidity compiler should already be selected under the `compile` tab on the upper right.
 2. Let's load and compile a contract
@@ -33,7 +33,7 @@ title: Testing with Remix Browser IDE
 	- Next, try a light red "transaction" function, like `pause` that does cost gas to use. If you expand the log entry for the pause function you shold see extra boxes for gas, transaction cost and execution cost. 
 5. Congratulations! You deployed a smart contract and interacted with it.
 
-#### Next Steps:
+## Next Steps:
 Deploy the rest of the contracts using different addresses and test the various function interacting them.
 
 For example:
