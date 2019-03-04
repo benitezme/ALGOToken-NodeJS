@@ -14,11 +14,14 @@
       "contracts/algo-core-team-role": {
         "title": "ALGO Core Team Role Contract"
       },
-      "contracts/algo-pool": {
-        "title": "ALGO Pool Contract"
+      "contracts/algo-fees": {
+        "title": "ALGO Fees Contract"
       },
       "contracts/algo-miner": {
         "title": "ALGO Miner Contract"
+      },
+      "contracts/algo-pool": {
+        "title": "ALGO Pool Contract"
       },
       "contracts/algo-supervisor-role": {
         "title": "ALGO Supervisor Role Contract"

@@ -82,30 +82,4 @@ Now, let's go back to our CLI and test.
 
 1. Making sure your CLI working directory is in the ALGOToken-NodeJS root to make sure we use the Ropsten network setup, enter: `truffle console --network ropsten`. You should see `truffle(ropsten)>`.
 2. Do a simple test to make sure the console is connected to Ropsten. Check your test wallet eth balance: `web3.eth.getBalance('<your-address-including-single-quotes>');` Should return qty of ether in wei, e.g. `'2954915900000000000'`
-3. Sh
-
-## Flattening Contracts
-
-Note, this is a Truffle-specific flattener (though works on Remix) and so see [Solidity Flattener](https://github.com/BlockCatIO/solidity-flattener) for a more general contract flattener.
-
-#### Getting Started
-
-Install [truffle-flattener](https://github.com/nomiclabs/truffle-flattener)
-
-```
-npm install truffle-flattener -g
-```
-
-#### Flatten Contracts
-
-From the repo root, run:
-
-```
-truffle-flattener contracts/core/AlgoTokenV1.sol --output remix/AlgoTokenV1_flat.sol
-
-truffle-flattener contracts/core/AlgoPool.sol --output remix/AlgoPool_flat.sol
-
-truffle-flattener contracts/core/AlgoMiner.sol --output remix/AlgoMiner_flat.sol
-
-truffle-flattener contracts/core/AlgoFees.sol --output remix/AlgoFees_flat.sol
-```
+3. 
